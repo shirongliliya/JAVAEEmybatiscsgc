@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.cn.mapper.CatasMapper">
+   <insert id="addcatas" parameterType="com.cn.po.Catas" >
+   		insert into cata(cata_id,cata_name,cata_des,cata_price,cata_publish)
+   		 values(#{cata_id},#{cata_name},#{cata_des},#{cata_price},#{cata_publish})
+   </insert>
+  <select id="findcatasid" parameterType="Integer"
+  resultType="com.cn.po.Catas">
+  select * from cata where cata_id=#{cata_id}
+  
+  </select>
+  <select id="findcatasname" parameterType="String"
+  resultType="com.cn.po.Catas">
+  select * from cata where cata_name like '%${value}%'
+  </select>
+  <update id="updatecatas" parameterType="com.cn.po.Catas" >
+  update cata set
+  cata_name=#{cata_name},cata_des=#{cata_des},cata_price=#{cata_price},cata_publish=#{cata_price}
+  where cata_id=#{cata_id}
+  </update>
+  <delete id="deletecatas" parameterType="Integer">
+  delete from cata where cata_id=#{cata_id}
+  </delete>
+</mapper>
